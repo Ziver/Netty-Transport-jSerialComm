@@ -2,7 +2,7 @@
 // Jenkinsfile (Pipeline Script)
 node {
     stage('Checkout') {
-        git url: scm.getUserRemoteConfigs()[0].getUrl()
+        checkout scm
     }
 
     withMaven(jdk: "jdk8", maven: "m3.5", mavenLocalRepo: ".repository") {
