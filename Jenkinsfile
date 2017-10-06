@@ -3,7 +3,7 @@
 node {
     env.REPO_URL = "https://github.com/Ziver/Netty-Transport-jSerialComm"
     
-    buildStep('Checkout') {
+    stage('Checkout') {
         git url: env.REPO_URL
     }
 
@@ -21,17 +21,17 @@ node {
             sh 'mvn -DskipStatic -DskipTests install'
         }
     }
-    
-    setBuildStatus("CI", "SUCCESS");
 }
 
 void buildStep(String message, Closure closure) {
-    stage(message);
-    try {
-        setBuildStatus(message, "PENDING");
-        closure();
-    } catch (Exception e) {
-        setBuildStatus(message, "FAILURE");
+    stage(message) {
+        try {
+            setBuildStatus(message, "PENDING");
+            closure();
+            setBuildStatus(message, "SUCCESS");
+        } catch (Exception e) {
+            setBuildStatus(message, "FAILURE");
+        }
     }
 }
 
