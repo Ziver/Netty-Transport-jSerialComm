@@ -27,6 +27,7 @@
 
     <name>Netty/Transport/jSerialComm</name>
     <description>A Netty Serial Transport using the jSerialComm library</description>
+    <url>https://github.com/Ziver/Netty-Transport-jSerialComm</url>
 
     <licenses>
         <license>
