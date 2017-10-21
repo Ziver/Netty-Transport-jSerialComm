@@ -35,6 +35,7 @@ void buildStep(String message, Closure closure) {
             setBuildStatus(message, "SUCCESS");
         } catch (Exception e) {
             setBuildStatus(message, "FAILURE");
+            throw e;
         }
     }
 }
